@@ -1,4 +1,3 @@
-
 body {
   background-color: #0a0a0a;
   color: #00ffcc;
@@ -48,9 +47,36 @@ input {
 }
 
 .logo {
-  width: 140px;
+  max-width: 300px;
+  width: 80%;
   height: auto;
-  filter: drop-shadow(0 0 12px #00ff99);
+  display: block;
+  margin: 20px auto;
+  filter: drop-shadow(0 0 8px #00ff99);
+  animation: glowSpinPulse 6s ease-in-out infinite;
+}
+
+@keyframes glowSpinPulse {
+  0% {
+    transform: scale(1) rotate(0deg);
+    filter: drop-shadow(0 0 8px #00ff99);
+  }
+  25% {
+    transform: scale(1.05) rotate(90deg);
+    filter: drop-shadow(0 0 16px #00ff99);
+  }
+  50% {
+    transform: scale(1) rotate(180deg);
+    filter: drop-shadow(0 0 8px #00ff99);
+  }
+  75% {
+    transform: scale(1.05) rotate(270deg);
+    filter: drop-shadow(0 0 16px #00ff99);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    filter: drop-shadow(0 0 8px #00ff99);
+  }
 }
 
 .pot-section, .winner-section, .countdown-section, .entry-checker, .alert-form,
