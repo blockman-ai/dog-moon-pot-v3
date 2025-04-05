@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOG MOON POT</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>$DOG MOON POT</h1>
+
+    <div class="pot-section">
+      <h2>Live Pot: <span id="live-pot">Loading...</span> $DOG</h2>
+      <p>Payout: <span id="payout">...</span> | Rollover: <span id="rollover">...</span> | Creator: <span id="creator-fee">...</span></p>
+    </div>
+
+    <div class="winner-section">
+      <h3>Last Winner</h3>
+      <div id="last-winner">Waiting...</div>
+    </div>
+
+    <div class="countdown-section">
+      <h3>Next Draw In</h3>
+      <div id="countdown">--h --m --s</div>
+    </div>
+
+    <div class="entry-checker">
+      <h3>Track Your Entry</h3>
+      <input id="entry-input" placeholder="Enter TXID or Email" />
+      <button onclick="checkEntry()">Check</button>
+      <div id="entry-result"></div>
+    </div>
+
+    <div class="alert-form">
+      <h3>Get Winner Notifications</h3>
+      <input id="alert-email" placeholder="Email or X handle" />
+      <input id="alert-txid" placeholder="TXID (optional)" />
+      <button onclick="notifyMe()">Notify Me</button>
+    </div>
+
+    <div class="send-section">
+      <h3>Send $DOG to Join</h3>
+      <p><code id="lotto-address">bc1psewn5h...</code></p>
+      <button onclick="showQRCode()">Show QR</button>
+    </div>
+
+    <div class="price-section">
+      <p>1 $DOG = <span id="dog-price">--</span> USD</p>
+    </div>
+
+    <div class="winner-board">
+      <h3>Past Winners</h3>
+      <ul id="winner-list"></ul>
+    </div>
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
