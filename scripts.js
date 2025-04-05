@@ -1,9 +1,12 @@
+
 // Config
 const ADDRESS = "bc1psewn5hprrlhhcze9x9lcpd74wmpy26cwaxpzc270v8x0h9kt3kls6hrax4";
 const PRICE_API = "https://api.mempool.space/api/v1/runes/DOG/price/usd";
 const ENTRY_JSON = "lottery_entries.json";
 const STATUS_JSON = "lottery_status.json";
 const WINNERS_JSON = "winners_history.json";
+
+let userAddress = null;
 
 // Utility
 const $ = id => document.getElementById(id);
@@ -98,46 +101,41 @@ async function loadWinners() {
   }
 }
 
+// Connect UniSat Wallet
+async function connectWallet() {
+  try {
+    const accounts = await window.unisat.requestAccounts();
+    userAddress = accounts[0];
+    $("wallet-status").textContent = "Connected: " + userAddress.slice(0, 6) + "..." + userAddress.slice(-4);
+  } catch (err) {
+    alert("Failed to connect UniSat wallet");
+  }
+}
+
+// View Entry from Wallet
+async function viewMyEntry() {
+  if (!userAddress) {
+    alert("Please connect your UniSat wallet first.");
+    return;
+  }
+
+  try {
+    const res = await fetch(ENTRY_JSON);
+    const entries = await res.json();
+    const match = entries.find(e => e.from.toLowerCase() === userAddress.toLowerCase());
+
+    if (match) {
+      alert(`Your entry: ${match.amount} $DOG — TXID: ${match.txid.slice(0, 12)}...`);
+    } else {
+      alert("You haven't entered this round yet.");
+    }
+  } catch (e) {
+    alert("Error checking your wallet entry.");
+  }
+}
+
 // Init
 loadPot();
 loadCountdown();
 loadPrice();
 loadWinners();
-
-// === UniSat Wallet Connect ===
-let userAddress = null;
-
-async function connectUniSatWallet() {
-  if (typeof window.unisat === "undefined") {
-    alert("Please install the UniSat Wallet extension.");
-    return;
-  }
-
-  try {
-    const accounts = await window.unisat.requestAccounts();
-    userAddress = accounts[0];
-    alert(`Connected: ${userAddress}`);
-    $("lotto-address").textContent = userAddress;
-  } catch (err) {
-    console.error("UniSat connection failed:", err);
-    alert("Failed to connect UniSat Wallet.");
-  }
-}
-
-// Optional: Auto-fill wallet if already connected
-async function checkAutoReconnect() {
-  if (typeof window.unisat !== "undefined") {
-    try {
-      const isConnected = await window.unisat.isConnected();
-      if (isConnected) {
-        const accounts = await window.unisat.getAccounts();
-        userAddress = accounts[0];
-        $("lotto-address").textContent = userAddress;
-      }
-    } catch (err) {
-      console.warn("Auto-connect failed:", err);
-    }
-  }
-}
-
-checkAutoReconnect();
