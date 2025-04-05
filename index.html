@@ -4,56 +4,80 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DOG MOON POT</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter&display=swap" rel="stylesheet" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="icon-192.png" sizes="192x192" />
+
+  <!-- SEO + Social Previews -->
+  <meta name="description" content="Join the DOG MOON POT — a decentralized, on-chain Bitcoin Rune lottery with real $DOG rewards." />
+  <meta property="og:title" content="DOG MOON POT" />
+  <meta property="og:description" content="A fully on-chain $DOG Rune lottery. Fair. Fun. Forever." />
+  <meta property="og:image" content="https://blockman-ai.github.io/dog-moon-pot-v3/icon-512.png" />
+  <meta property="og:url" content="https://blockman-ai.github.io/dog-moon-pot-v3/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- PWA: Register Service Worker -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("sw.js");
+      });
+    }
+  </script>
 </head>
 <body>
   <div class="container">
     <h1>$DOG MOON POT</h1>
 
-    <div class="pot-section">
+    <section class="pot-section">
       <h2>Live Pot: <span id="live-pot">Loading...</span> $DOG</h2>
-      <p>Payout: <span id="payout">...</span> | Rollover: <span id="rollover">...</span> | Creator: <span id="creator-fee">...</span></p>
-    </div>
+      <p>Payout: <span id="payout">--</span> | Rollover: <span id="rollover">--</span> | Creator: <span id="creator-fee">--</span></p>
+    </section>
 
-    <div class="winner-section">
+    <section class="winner-section">
       <h3>Last Winner</h3>
       <div id="last-winner">Waiting...</div>
-    </div>
+    </section>
 
-    <div class="countdown-section">
+    <section class="countdown-section">
       <h3>Next Draw In</h3>
       <div id="countdown">--h --m --s</div>
-    </div>
+    </section>
 
-    <div class="entry-checker">
+    <section class="entry-checker">
       <h3>Track Your Entry</h3>
       <input id="entry-input" placeholder="Enter TXID or Email" />
       <button onclick="checkEntry()">Check</button>
       <div id="entry-result"></div>
-    </div>
+    </section>
 
-    <div class="alert-form">
+    <section class="alert-form">
       <h3>Get Winner Notifications</h3>
       <input id="alert-email" placeholder="Email or X handle" />
       <input id="alert-txid" placeholder="TXID (optional)" />
       <button onclick="notifyMe()">Notify Me</button>
-    </div>
+    </section>
 
-    <div class="send-section">
-      <h3>Send $DOG to Join</h3>
+    <section class="send-section">
+      <h3>Send $DOG to Enter</h3>
       <p><code id="lotto-address">bc1psewn5h...</code></p>
       <button onclick="showQRCode()">Show QR</button>
-    </div>
+    </section>
 
-    <div class="price-section">
+    <section class="price-section">
       <p>1 $DOG = <span id="dog-price">--</span> USD</p>
-    </div>
+    </section>
 
-    <div class="winner-board">
+    <section class="wallet-connect">
+      <h3>Wallet</h3>
+      <button onclick="alert('Wallet connect coming soon!')">Connect UniSat Wallet</button>
+    </section>
+
+    <section class="winner-board">
       <h3>Past Winners</h3>
       <ul id="winner-list"></ul>
-    </div>
+    </section>
   </div>
 
   <script src="scripts.js"></script>
