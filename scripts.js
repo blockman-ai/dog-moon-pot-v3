@@ -103,3 +103,41 @@ loadPot();
 loadCountdown();
 loadPrice();
 loadWinners();
+
+// === UniSat Wallet Connect ===
+let userAddress = null;
+
+async function connectUniSatWallet() {
+  if (typeof window.unisat === "undefined") {
+    alert("Please install the UniSat Wallet extension.");
+    return;
+  }
+
+  try {
+    const accounts = await window.unisat.requestAccounts();
+    userAddress = accounts[0];
+    alert(`Connected: ${userAddress}`);
+    $("lotto-address").textContent = userAddress;
+  } catch (err) {
+    console.error("UniSat connection failed:", err);
+    alert("Failed to connect UniSat Wallet.");
+  }
+}
+
+// Optional: Auto-fill wallet if already connected
+async function checkAutoReconnect() {
+  if (typeof window.unisat !== "undefined") {
+    try {
+      const isConnected = await window.unisat.isConnected();
+      if (isConnected) {
+        const accounts = await window.unisat.getAccounts();
+        userAddress = accounts[0];
+        $("lotto-address").textContent = userAddress;
+      }
+    } catch (err) {
+      console.warn("Auto-connect failed:", err);
+    }
+  }
+}
+
+checkAutoReconnect();
