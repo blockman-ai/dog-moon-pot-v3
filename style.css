@@ -1,105 +1,99 @@
-/* Fonts */
 body {
+  margin: 0;
+  padding: 0;
   font-family: 'Inter', sans-serif;
   background-color: #0a0a0a;
   color: #00ff88;
-  margin: 0;
-  padding: 0;
+  line-height: 1.5;
 }
 
-/* Container */
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-/* Headings */
-h1 {
+h1, h2, h3 {
   font-family: 'Orbitron', sans-serif;
-  font-size: 2.5rem;
-  color: #00ff00;
-  text-shadow: 0 0 15px #00ff88;
-}
-
-h2, h3 {
-  font-weight: bold;
+  text-align: center;
   color: #00ff88;
   text-shadow: 0 0 10px #00ff88;
 }
 
-/* Buttons */
-button {
-  background: #00ff88;
-  color: black;
-  border: none;
-  padding: 0.7rem 1.5rem;
-  margin-top: 1rem;
-  font-weight: bold;
-  font-size: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 0 10px #00ff88;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.3s;
+.container {
+  max-width: 100%;
+  margin: auto;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px #00ffcc, 0 0 25px #00ffaa;
-}
-
-/* Inputs */
-input {
-  width: 90%;
-  padding: 0.6rem;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-  background: #111;
-  color: #00ff88;
-  border: 1px solid #00ff88;
-  border-radius: 6px;
-  font-size: 1rem;
-}
-
-/* Sections */
-.pot-section, .winner-section, .countdown-section,
+section, .pot-section, .winner-section, .countdown-section,
 .entry-checker, .alert-form, .send-section, .price-section, .winner-board {
   background: rgba(0, 255, 136, 0.05);
   border: 1px solid #00ff88;
-  border-radius: 12px;
-  padding: 1rem;
-  margin: 1.2rem 0;
-  box-shadow: 0 0 12px rgba(0, 255, 136, 0.4);
+  border-radius: 16px;
+  margin-bottom: 20px;
+  padding: 16px;
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.3);
 }
 
-/* QR code display */
-#lotto-address {
-  font-size: 0.95rem;
-  word-wrap: break-word;
-  display: block;
-  margin: 0.5rem 0;
+input {
+  width: 100%;
+  max-width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  background: #111;
+  color: #00ff88;
+  border: 1px solid #00ff88;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
 }
 
-/* Past Winners */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 1rem;
+  background: #00ff88;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 12px #00ffaa;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.02);
+  background: #00ffaa;
+}
+
 #winner-list {
   list-style: none;
   padding: 0;
-  margin-top: 1rem;
+  margin: 0;
 }
 
 #winner-list li {
-  margin-bottom: 0.7rem;
-  color: #b6fcd5;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0,255,255,0.1);
 }
 
-/* Responsive */
-@media (max-width: 500px) {
-  h1 {
-    font-size: 2rem;
-  }
+code {
+  display: inline-block;
+  padding: 6px 10px;
+  background: #111;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  word-wrap: break-word;
+  color: #00ff88;
+}
 
-  input, button {
-    width: 100%;
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+  h2 {
+    font-size: 1.2rem;
+  }
+  button, input {
+    font-size: 1rem;
   }
 }
