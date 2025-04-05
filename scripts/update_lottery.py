@@ -76,9 +76,3 @@ def main():
 if __name__ == "__main__":
     main()
 """
-
-script_path = "/mnt/data/update_lottery.py"
-with open(script_path, "w") as f:
-    f.write(script)
-
-script_path
